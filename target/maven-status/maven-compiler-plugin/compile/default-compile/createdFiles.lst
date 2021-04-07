@@ -1,0 +1,4 @@
+com/syncheron/service/Translator.class
+com/syncheron/controller/WordController.class
+com/syncheron/model/Word.class
+com/syncheron/SpringBootApplication.class
