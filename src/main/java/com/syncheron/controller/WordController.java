@@ -32,9 +32,8 @@ public class WordController {
         if (null != sentence) {
             Arrays.stream(sentence.toLowerCase().split(" "))
                     .filter(isAlphabetPredicate)
+                    .map(x -> (translator.translate(x) != null) ? translator.translate(x) : x)
                     .forEach(x -> {
-                                //Determine, if it is a same word using translator service
-                                x = (translator.translate(x) != null) ? translator.translate(x) : x;
                                 //Check if this word exists before in hashmap, if not add 1 else increment the counter by 1
                                 HashMap<String, Integer> wordCounterMap = word.getWordCounterMap();
                                 if (wordCounterMap.putIfAbsent(x, 1) != null) {
