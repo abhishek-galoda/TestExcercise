@@ -26,6 +26,12 @@ public class WordController {
     final Predicate<String> isAlphabetPredicate = x -> x.chars().allMatch(Character::isAlphabetic);
 
     //Should be post but for testing simplicity have kept it as only getmapping
+
+    /**
+     * This Method accepts a Sentence, uses a delimeter " "  to parse through words and then add those words in a hashmap
+     * @param sentence
+     * @return
+     */
     @GetMapping("/addWord/{sentence}")
     public ResponseEntity<String> addWord(@PathVariable String sentence) {
 
@@ -41,12 +47,17 @@ public class WordController {
                                 }
                             }
                     );
-            return new ResponseEntity<>(sentence+ " has been added to counter " , HttpStatus.OK);
+            return new ResponseEntity<>(sentence+ " has been added successfully " , HttpStatus.OK);
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Request");
     }
 
 
+    /**
+     * Return the count of the searched word from Hashmap
+     * @param countWord
+     * @return
+     */
     @GetMapping("/count/{countWord}")
     public int countWord(@PathVariable String countWord) {
 
